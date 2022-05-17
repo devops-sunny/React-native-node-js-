@@ -13,8 +13,6 @@ router.get(`/`, async (req, res) =>{
          filter = {category: req.query.categories.split(',')}
     }
 
-
-    
     const productList = await Product.find(filter).populate('category');
 
     if(!productList) {
@@ -35,7 +33,7 @@ router.get(`/:id`, async (req, res) =>{
 router.post(`/`, async (req, res) =>{
     const category = await Category.findById(req.body.category);
     if(!category) return res.status(400).send('Invalid Category')
-   console.log(" req.body.", req.body)
+
     let product = new Product({
         name: req.body.name,
         description: req.body.description,

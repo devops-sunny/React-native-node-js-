@@ -6,11 +6,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv/config');
 
-
-const authJwt = require('./helpers/jwt');
-const errorHandler = require('./helpers/error-handler');
-
-
 app.use(cors());
 app.options('*', cors())
 
@@ -18,8 +13,6 @@ app.options('*', cors())
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
-// app.use(authJwt());                                       // login  jwt
-// app.use(errorHandler);
 
 //Routes
 const categoriesRoutes = require('./routes/categories');
@@ -52,4 +45,3 @@ app.listen(3000, ()=>{
 
     console.log('server is running http://localhost:3000');
 })
-
